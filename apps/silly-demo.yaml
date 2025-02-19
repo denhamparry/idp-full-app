@@ -1,0 +1,29 @@
+apiVersion: devopstoolkit.live/v1alpha1
+kind: AppClaim
+metadata:
+  annotations:
+    terasky.backstage.io/add-to-catalog: 'true'
+    terasky.backstage.io/owner: group:default/admin
+    terasky.backstage.io/system: a-team
+  name: silly-demo
+  namespace: a-team
+spec:
+  parameters:
+    ci:
+      enabled: true
+      buildImages: true
+      runTests: true
+    repository:
+      enabled: false
+    scaling:
+      enabled: true
+      max: 10
+      min: 2
+    host: silly-demo.44.213.19.136.nip.io
+    image: ghcr.io/vfarcic/silly-demo
+    ingressClassName: contour
+    namespace: a-team
+    port: 8080
+    tag: 1.4.342
+  id: silly-demo
+  compositeDeletePolicy: Background
